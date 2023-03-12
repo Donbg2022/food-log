@@ -37,10 +37,13 @@ console.log(selected)
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
     querySnapshot.forEach((doc) => {
-    let description = doc.data().description
+
+    let directions = doc.data().directions
     let stretch = doc.id
-    console.log(`${stretch} => ${description}`);
-    setStretchList([{stretch, description}])
+
+    
+    console.log(`${stretch} => ${directions}`);
+    setStretchList([{stretch, directions}])
 })}
 if(selected === null){
   return
@@ -64,7 +67,7 @@ if(selected === null){
     <div>
       <DropdownSearch onChange={handleSelect} value={selected} options={options}/>
       {stretchList.map((stretch) => {
-        return <div>{stretch.stretch}{stretch.description}</div>
+        return <div>{stretch.stretch}{stretch.directions}</div>
       })}
     </div>
   )
