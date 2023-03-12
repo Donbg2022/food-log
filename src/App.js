@@ -1,4 +1,4 @@
-import SearchPage from "./pages/SearchPage"
+import SearchPage from "./pages/DropdownSearchPage"
 
 export default function App() {
   return (

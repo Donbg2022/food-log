@@ -1,0 +1,35 @@
+
+.dropdown-container{
+  
+}
+.dropdown-shape{
+  background-color: rgb(243, 243, 243);
+  padding: 1rem;
+  border-radius: 5px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: larger;
+  cursor: pointer;
+
+}
+
+.chevron{
+  font-size: x-large;
+  margin-right: 0;
+}
+
+.dropdown-options{
+  background-color: rgb(243, 243, 243);
+  padding: 1rem;
+  border-radius: 5px;
+  width: 60%;
+  margin: auto;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.dropdown-options:hover, .dropdown-shape:hover{
+  background-color: gray;
+}
