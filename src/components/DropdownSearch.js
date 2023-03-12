@@ -24,11 +24,13 @@ function DropdownSearch ({ options, onChange, value }) {
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen)
+    
   }
 
   const handleOptionClick = (option) => {
     onChange(option)
     setIsOpen(false)
+
   }
 
   const renderedOptions = options.map((option) => {
