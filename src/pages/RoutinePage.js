@@ -1,8 +1,8 @@
 import Routine from '../components/Routine'
 
-export default function RoutinePage({ selectedStretches }){
+export default function RoutinePage({ selectedStretches, directions }){
 
   return(
-    <Routine selectedStretches={selectedStretches}/>
+    <Routine directions={directions} selectedStretches={selectedStretches}/>
   )
 }

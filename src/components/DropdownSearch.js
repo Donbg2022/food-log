@@ -15,22 +15,20 @@ function DropdownSearch ({ options, onChange, value }) {
       setIsOpen(false)
     }
   }
-  document.addEventListener('click', handler, true)
+    document.addEventListener('click', handler, true)
 
-  return () => {
-    document.removeEventListener('click', handler)
-    }
-  }, [])
+    return () => {
+      document.removeEventListener('click', handler)
+      }
+    }, [])
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen)
-    
   }
 
   const handleOptionClick = (option) => {
     onChange(option)
     setIsOpen(false)
-
   }
 
   const renderedOptions = options.map((option) => {
@@ -39,7 +37,6 @@ function DropdownSearch ({ options, onChange, value }) {
     )
   }
 )
-
   return (
     <div className="dropdown-container" ref={divEl}>
       <div className='dropdown-shape' onClick={handleDropdownClick}>

@@ -17,31 +17,34 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-let i = []
+let docStretchNameArr = []
+let docDirectionsArr = []
 
 
-function DropdownSearchPage({ handleListClick }) {
+
+function DropdownSearchPage({ handleListClick, handleDirections }) {
   const [selected, setSelected] = useState(null)
   const [stretchList, setStretchList] = useState([])
 
-
-
 useEffect(() => {
-
 
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
   if (querySnapshot === stretchList){
     return
   }else{
-    querySnapshot.forEach((doc) => { 
-      if(!i.includes(doc.id)){
-        i.push(doc.id)
+    querySnapshot.forEach((doc) => {
+      if(!docStretchNameArr.includes(doc.id)){
+        docStretchNameArr.push(doc.id)
+        console.log(doc.id, '=>', doc.data().directions)
+        docDirectionsArr.push(doc.data().directions)
       }
+      console.log(docDirectionsArr)
     
     }
   )}
-  setStretchList(i)
+  setStretchList(docStretchNameArr)
+  handleDirections(docDirectionsArr)
 }
     if(selected === null){
       return
