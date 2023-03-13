@@ -20,14 +20,14 @@ const db = getFirestore(app);
 let i = []
 
 
-function DropdownSearchPage() {
+function DropdownSearchPage({ handleListClick }) {
   const [selected, setSelected] = useState(null)
   const [stretchList, setStretchList] = useState([])
-  const [selectedStretches, setSelectedStretches] = useState([])
 
 
 
 useEffect(() => {
+
 
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
@@ -53,7 +53,6 @@ const queryDb = async() => {
 
   const handleSelect = (option) => {
     setSelected(option)
-    
   }
   
   const options = [
@@ -62,20 +61,13 @@ const queryDb = async() => {
     {label: 'Bicep', value: 'bicep'},
   ]
 
-  const handleListClick = (chosenStretch) => {
-    if(!selectedStretches.includes(chosenStretch)){
-      setSelectedStretches([...selectedStretches, chosenStretch])
-    }
-  }
-  console.log(selectedStretches)
-
   return(
     <div>
       <DropdownSearch onChange={handleSelect} value={selected} options={options}/>
       <div className='stretch-list-wrapper'>
         {stretchList.map((stretch) => {
         return (
-          <p onClick={() => handleListClick(stretch)} className='stretch-list'>{stretch}</p>
+          <p key={stretch} onClick={() => handleListClick(stretch)} className='stretch-list'>{stretch}</p>
         )
       })}
       </div>
