@@ -63,8 +63,11 @@ const queryDb = async() => {
   ]
 
   const handleListClick = (chosenStretch) => {
-    setSelectedStretches([...selectedStretches, chosenStretch])
+    if(!selectedStretches.includes(chosenStretch)){
+      setSelectedStretches([...selectedStretches, chosenStretch])
+    }
   }
+  console.log(selectedStretches)
 
   return(
     <div>
