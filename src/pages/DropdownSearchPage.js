@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react'
 import DropdownSearch from '../components/DropdownSearch'
 import '../CSS/Dropdown.css'
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore"; 
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCSNoMOvtojK8avoxikkJCkcSV7DLzjYp8",
   authDomain: "stretchg-4b206.firebaseapp.com",
@@ -22,39 +17,43 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+let i = []
 
 
 function DropdownSearchPage() {
   const [selected, setSelected] = useState(null)
   const [stretchList, setStretchList] = useState([])
+  const [selectedStretches, setSelectedStretches] = useState([])
 
 
 
 useEffect(() => {
-console.log(selected)
 
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
-    querySnapshot.forEach((doc) => {
-
-    let directions = doc.data().directions
-    let stretch = doc.id
-
+  if (querySnapshot === stretchList){
+    return
+  }else{
+    querySnapshot.forEach((doc) => { 
+      if(!i.includes(doc.id)){
+        i.push(doc.id)
+      }
     
-    console.log(`${stretch} => ${directions}`);
-    setStretchList([{stretch, directions}])
-})}
-if(selected === null){
-  return
-}else{
-  queryDb()
+    }
+  )}
+  setStretchList(i)
 }
-}, [selected])
+    if(selected === null){
+      return
+    }else{
+      queryDb()
+    }
+  }, [selected])
 
 
   const handleSelect = (option) => {
     setSelected(option)
+    
   }
   
   const options = [
@@ -63,12 +62,20 @@ if(selected === null){
     {label: 'Bicep', value: 'bicep'},
   ]
 
+  const handleListClick = (chosenStretch) => {
+    setSelectedStretches([...selectedStretches, chosenStretch])
+  }
+
   return(
     <div>
       <DropdownSearch onChange={handleSelect} value={selected} options={options}/>
-      {stretchList.map((stretch) => {
-        return <div>{stretch.stretch}{stretch.directions}</div>
+      <div className='stretch-list-wrapper'>
+        {stretchList.map((stretch) => {
+        return (
+          <p onClick={() => handleListClick(stretch)} className='stretch-list'>{stretch}</p>
+        )
       })}
+      </div>
     </div>
   )
 }
