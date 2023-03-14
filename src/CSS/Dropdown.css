@@ -52,3 +52,17 @@
   background-color: aliceblue;
   cursor: pointer;
 }
+
+.button-wrapper{
+  text-align: center;
+}
+.save-button{
+  text-align: center;
+  background-color: rgb(244, 241, 241);
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+.save-button:hover{
+  background-color: aliceblue;
+}

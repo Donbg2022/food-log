@@ -1,10 +1,14 @@
 import SearchPage from "./pages/DropdownSearchPage"
 import RoutinePage from './pages/RoutinePage'
 import { useState } from "react"
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
 
 export default function App() {
   const [selectedStretches, setSelectedStretches] = useState([])
-  const [count, setCount] = useState(0)
 
   const handleListClick = (chosenStretch, stretchDirections) => {
     if(!selectedStretches.includes(chosenStretch)){
@@ -17,9 +21,13 @@ export default function App() {
     console.log(directionArray)  }
 
   return (
-    <div>
-      <SearchPage handleDirections={handleDirections} handleListClick={handleListClick}/>
-      <RoutinePage count={count} selectedStretches={selectedStretches}/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<SearchPage handleDirections={handleDirections} handleListClick={handleListClick}/>}></Route>
+        <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
+      </Routes>
+     {/* <RoutinePage selectedStretches={selectedStretches} /> */}
+
+    </Router>
   )
 }

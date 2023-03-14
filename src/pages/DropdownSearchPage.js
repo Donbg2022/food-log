@@ -4,6 +4,7 @@ import '../CSS/Dropdown.css'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore"; 
+import { Link } from "react-router-dom"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCSNoMOvtojK8avoxikkJCkcSV7DLzjYp8",
@@ -61,6 +62,9 @@ const queryDb = async() => {
           <p key={stretch.name} onClick={() => handleListClick(stretch.name, stretch.directions)} className='stretch-list'>{stretch.name}</p>
         )
       })}
+      </div>
+      <div className='button-wrapper'>
+        <Link to='/routine'><button className='save-button'>Start Routine</button></Link>
       </div>
     </div>
   )
