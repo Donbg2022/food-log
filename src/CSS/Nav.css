@@ -1,0 +1,21 @@
+.nav{
+  display: flex;
+  justify-content: space-between
+}
+.links-list{
+  display: flex;
+}
+.links-list li{
+  list-style: none;
+  font-size: x-large;
+  padding:  5px 1rem;
+}
+.links-list li:hover{
+  background-color: aliceblue;
+}
+
+.links-list li a{
+  text-decoration: none;
+  color: black;
+}
+

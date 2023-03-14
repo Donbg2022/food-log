@@ -1,5 +1,6 @@
 import SearchPage from "./pages/DropdownSearchPage"
 import RoutinePage from './pages/RoutinePage'
+import Nav from "./components/Nav";
 import { useState } from "react"
 import {
   BrowserRouter as Router,
@@ -22,6 +23,7 @@ export default function App() {
 
   return (
     <Router>
+      <Nav></Nav>
       <Routes>
         <Route path='/' element={<SearchPage handleDirections={handleDirections} handleListClick={handleListClick}/>}></Route>
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
