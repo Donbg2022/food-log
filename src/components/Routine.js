@@ -7,9 +7,9 @@ export default function Routine ({ selectedStretches, count }){
         selectedStretches.map((stretches) => {
           return(
             <div>
-            <h1 key={stretches.name}>{stretches.name}</h1>
+            <h1 className="stretch-title" key={stretches.name}>{stretches.name}</h1>
               {stretches.directions.map((direction)=> {
-                return <p>{direction}</p>
+                return <p className="stretch-directions">{direction}</p>
             })}
             </div>
         )})}
