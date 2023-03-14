@@ -4,28 +4,22 @@ import { useState } from "react"
 
 export default function App() {
   const [selectedStretches, setSelectedStretches] = useState([])
-  const [directions, setDirections] = useState([])
   const [count, setCount] = useState(0)
 
-  const handleListClick = (chosenStretch) => {
-
-        setCount(count + 1)
-
+  const handleListClick = (chosenStretch, stretchDirections) => {
     if(!selectedStretches.includes(chosenStretch)){
-      setSelectedStretches([...selectedStretches, chosenStretch])
+      setSelectedStretches([...selectedStretches, {name: chosenStretch, directions: stretchDirections}])
     }
   
   }
 
   const handleDirections = (directionArray) => {
-    console.log(directionArray)
-    setDirections(directionArray)
-  }
+    console.log(directionArray)  }
 
   return (
     <div>
       <SearchPage handleDirections={handleDirections} handleListClick={handleListClick}/>
-      <RoutinePage count={count} directions={directions} selectedStretches={selectedStretches}/>
+      <RoutinePage count={count} selectedStretches={selectedStretches}/>
     </div>
   )
 }

@@ -17,8 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-let docStretchNameArr = []
-let docDirectionsArr = []
+
 
 
 
@@ -30,34 +29,23 @@ useEffect(() => {
 
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
-  if (querySnapshot === stretchList){
-    return
-  }else{
-    querySnapshot.forEach((doc) => {
-      if(!docStretchNameArr.includes(doc.id)){
-        docStretchNameArr.push(doc.id)
-        console.log(doc.id, '=>', doc.data().directions)
-        docDirectionsArr.push(doc.data().directions)
+  
+        setStretchList(querySnapshot.docs.map((doc) => {
+         return {name: doc.id, directions: doc.data().directions}
+        }))
       }
-      console.log(docDirectionsArr)
     
-    }
-  )}
-  setStretchList(docStretchNameArr)
-  handleDirections(docDirectionsArr)
-}
+
     if(selected === null){
       return
     }else{
       queryDb()
-    }
-  }, [selected])
+    }}, [selected])
 
 
   const handleSelect = (option) => {
     setSelected(option)
   }
-  
   const options = [
     {label: 'Neck', value: 'neck'},
     {label: 'Shoulders', value: 'shoulders'},
@@ -70,7 +58,7 @@ const queryDb = async() => {
       <div className='stretch-list-wrapper'>
         {stretchList.map((stretch) => {
         return (
-          <p key={stretch} onClick={() => handleListClick(stretch)} className='stretch-list'>{stretch}</p>
+          <p key={stretch.name} onClick={() => handleListClick(stretch.name, stretch.directions)} className='stretch-list'>{stretch.name}</p>
         )
       })}
       </div>
