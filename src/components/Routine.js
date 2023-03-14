@@ -1,13 +1,18 @@
 export default function Routine ({ selectedStretches, count }){
-let i = -1
-  return (      
+      console.log(selectedStretches)  
+
+  
+  return (    
     <div>
       {          
         selectedStretches.map((stretches) => {
           return(
             <div key={stretches.name}>
               {stretches.name}
-              {stretches.directions}
+              
+              {stretches.directions.map((direction)=> {
+                return <p>{direction}</p>
+              })}
             </div>
           )
         })
