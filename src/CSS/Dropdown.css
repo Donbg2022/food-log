@@ -1,7 +1,5 @@
 
-.dropdown-container{
-  
-}
+/*  actual dropdown styling */
 .dropdown-shape{
   background-color: rgb(243, 243, 243);
   padding: 1rem;
@@ -32,4 +30,39 @@
 
 .dropdown-options:hover, .dropdown-shape:hover{
   background-color: gray;
+
+}
+
+
+/* stretch list */
+.stretch-list{
+  text-align: center;
+  padding: 1rem;
+  background-color: rgb(244, 241, 241);
+  border: gray;
+  width: 40%;
+  margin: 1rem auto;
+  border-radius: 10px;
+
+}
+.stretch-list-wrapper{
+  margin-top: 5rem;
+}
+.stretch-list:hover{
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.button-wrapper{
+  text-align: center;
+}
+.save-button{
+  text-align: center;
+  background-color: rgb(244, 241, 241);
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+.save-button:hover{
+  background-color: aliceblue;
 }
