@@ -29,7 +29,7 @@
 }
 
 .dropdown-options:hover, .dropdown-shape:hover{
-  background-color: gray;
+  background-color: rgb(142, 193, 237);
 
 }
 
@@ -49,7 +49,7 @@
   margin-top: 5rem;
 }
 .stretch-list:hover{
-  background-color: aliceblue;
+  background-color: rgb(142, 193, 237);
   cursor: pointer;
 }
 
@@ -64,5 +64,5 @@
   cursor: pointer;
 }
 .save-button:hover{
-  background-color: aliceblue;
+  background-color: rgb(142, 193, 237);
 }

@@ -1,17 +1,24 @@
-export default function Routine ({ selectedStretches, count }){
-      console.log(selectedStretches)  
+import { useState } from "react"
+import Countdown from "./Countdown"
+
+export default function Routine ({ selectedStretches }){
+
+  const handleClick = () => {
+    }
 
   return (    
-    <div>
+    <div >
         {
         selectedStretches.map((stretches) => {
           return(
-            <div>
+            <div className="routine-card"key={stretches.name}>
               
             <h1 className="stretch-title" key={stretches.name}>{stretches.name}</h1>
               {stretches.directions.map((direction)=> {
-                return <p className="stretch-directions">{direction}</p>
+                return <p key={direction.length} className="stretch-directions">{direction}</p>
             })}
+            <Countdown />
+
             </div>
         )})}
     </div>

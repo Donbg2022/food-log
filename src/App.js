@@ -1,4 +1,5 @@
 import SearchPage from "./pages/DropdownSearchPage"
+import './CSS/App.css'
 import RoutinePage from './pages/RoutinePage'
 import Nav from "./components/Nav";
 import { useState } from "react"
