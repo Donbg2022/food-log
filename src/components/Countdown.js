@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react"
 
-export default function Countdown(){
-  const [timer, setTimer] = useState(10)
+export default function Countdown({ onBgColor }){
+  const [timer, setTimer] = useState(1)
+
+  useEffect(() => {
+    if(timer === 0) {
+      onBgColor()
+    }
+  }, [timer])
 
     const handleClick = () => {
       const interval = setInterval(() => {
         setTimer(countdown => {
           if (countdown === 0) {
             clearInterval(interval);
+            
             return 0;
           } else {
             return countdown - 1;
@@ -15,7 +22,7 @@ export default function Countdown(){
         });
       }, 1000);
     }
-    
+ 
 
   return ( 
     <div>
