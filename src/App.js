@@ -13,10 +13,11 @@ export default function App() {
   const [selectedStretches, setSelectedStretches] = useState([])
 
   const handleListClick = (chosenStretch, stretchDirections) => {
-    if(!selectedStretches.includes(chosenStretch)){
+    if(selectedStretches.some((val)=> val.name === chosenStretch)){
+      return;
+    }else{
       setSelectedStretches([...selectedStretches, {name: chosenStretch, directions: stretchDirections}])
     }
-  
   }
 
   const handleDirections = (directionArray) => {
