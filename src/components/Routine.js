@@ -13,7 +13,7 @@ export default function Routine ({ selectedStretches }){
         {
         selectedStretches.map((stretches,index) => {
           return(
-            <div  style={{backgroundColor: isSelected.includes(index) ? 'green': 'blue'}} className="routine-card"key={stretches.name}>
+            <div  style={{backgroundColor: isSelected.includes(index) ? '#5ae642': 'rgb(142, 193, 237)'}} className="routine-card"key={stretches.name}>
               
             <h1 className="stretch-title" key={stretches.name}>{stretches.name}</h1>
               {stretches.directions.map((direction)=> {
