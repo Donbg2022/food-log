@@ -1,22 +1,28 @@
-export default function Routine ({ selectedStretches, count }){
-      console.log(selectedStretches)  
+import { useState } from "react"
+import Countdown from "./Countdown"
+
+export default function Routine ({ selectedStretches }){
+  const [isSelected, setIsSelected] = useState([])
+  
+  const bgColor = (index) => {
+    setIsSelected([...isSelected, index])
+    }
 
   return (    
-    <div>
+    <div >
         {
-        selectedStretches.map((stretches) => {
+        selectedStretches.map((stretches,index) => {
           return(
-            <div>
+            <div  style={{backgroundColor: isSelected.includes(index) ? '#5ae642': 'rgb(142, 193, 237)'}} className="routine-card"key={stretches.name}>
               
             <h1 className="stretch-title" key={stretches.name}>{stretches.name}</h1>
               {stretches.directions.map((direction)=> {
-                return <p className="stretch-directions">{direction}</p>
+                return <p key={direction.length} className="stretch-directions">{direction}</p>
             })}
+            <Countdown onBgColor={() => bgColor(index)} />
+
             </div>
         )})}
     </div>
   )
 }
-
-
-//add if statement or something so you cant repeat stretches if clicked more then once

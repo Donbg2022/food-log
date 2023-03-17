@@ -22,7 +22,7 @@ const db = getFirestore(app);
 
 
 
-function DropdownSearchPage({ handleListClick, handleDirections }) {
+function DropdownSearchPage({ handleListClick }) {
   const [selected, setSelected] = useState(null)
   const [stretchList, setStretchList] = useState([])
 
@@ -31,12 +31,11 @@ useEffect(() => {
 const queryDb = async() => {
   const querySnapshot = await getDocs(collection(db, selected.value));
   
-        setStretchList(querySnapshot.docs.map((doc) => {
-         return {name: doc.id, directions: doc.data().directions}
-        }))
-      }
-    
-
+    setStretchList(querySnapshot.docs.map((doc) => {
+      return {name: doc.id, directions: doc.data().directions}
+    }))
+  }
+  
     if(selected === null){
       return
     }else{
