@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react"
 import { GoChevronDown } from 'react-icons/go';
 
 
-function DropdownSearch ({ options, onChange, value }) {
+function DropdownSearch ({ options, handleStretchSelect, value, displayRoutine }) {
   const [isOpen, setIsOpen] = useState(false)
   const divEl = useRef()
 
@@ -27,7 +27,7 @@ function DropdownSearch ({ options, onChange, value }) {
   }
 
   const handleOptionClick = (option) => {
-    onChange(option)
+    handleStretchSelect(option)
     setIsOpen(false)
   }
 
@@ -37,6 +37,11 @@ function DropdownSearch ({ options, onChange, value }) {
     )
   }
 )
+
+const DropdownJsx = () => {
+
+  if(displayRoutine === true){
+
   return (
     <div className="dropdown-container" ref={divEl}>
       <div className='dropdown-shape' onClick={handleDropdownClick}>
@@ -48,6 +53,16 @@ function DropdownSearch ({ options, onChange, value }) {
     )}
     </div>
   )
+}
+else{
+  return <div>Add routine name first</div>
+}
+}
+
+return (
+  <div><DropdownJsx /></div>
+)
+  
 }
 
 export default DropdownSearch
