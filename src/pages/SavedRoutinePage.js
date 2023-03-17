@@ -1,10 +1,10 @@
 import SavedRoutine from '../components/SavedRoutine'
 import '../CSS/SavedRoutine.css'
 
-export default function SavedRoutinePage() {
+export default function SavedRoutinePage({handleRoutineListClick, queryDbList, selectedList}) {
 
 
   return (
-    <SavedRoutine />
+    <SavedRoutine handleRoutineListClick={handleRoutineListClick} selectedList={selectedList}queryDbList={queryDbList}/>
   )
 }

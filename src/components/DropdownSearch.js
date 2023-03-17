@@ -27,7 +27,8 @@ function DropdownSearch ({ options, handleStretchSelect, value, displayRoutine }
   }
 
   const handleOptionClick = (option) => {
-    handleStretchSelect(option)
+    handleStretchSelect(option.value)
+    console.log(option)
     setIsOpen(false)
   }
 

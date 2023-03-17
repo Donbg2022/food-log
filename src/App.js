@@ -21,19 +21,39 @@ export default function App() {
   const [routineName, setRoutineName] = useState('')
   const [stretchList, setStretchList] = useState([])
   const [selected, setSelected] = useState(null)
+  const [selectedList, setSelectedList] = useState('')
 
 
   const handleStretchSelect = (option) => {
     setSelected(option)
   }
 
+  function handleRoutineListClick(list){
+    setSelectedList(list)
+    console.log(selectedList)
+  }
+
   const queryDb = async() => {
-    const querySnapshot = await getDocs(collection(db, selected.value));
+    const querySnapshot = await getDocs(collection(db, selected));
     
       setStretchList(querySnapshot.docs.map((doc) => {
         return {name: doc.id, directions: doc.data().directions}
       }))
     }
+
+    const queryDbList = async() => {
+      if(selectedList.length > 0){
+        console.log(selectedList)
+
+        const querySnapshot = await getDocs(collection(db, selectedList));
+      
+        setStretchList(querySnapshot.docs.map((doc) => {
+          return {name: doc.id, directions: doc.data().directions}
+        }))
+        console.log(stretchList)
+      }
+      }
+    
 
 
   const handleListClick = async (chosenStretch, stretchDirections) => {
@@ -61,7 +81,7 @@ export default function App() {
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
       </Routes>
      {/* <RoutinePage selectedStretches={selectedStretches} /> */}
-    <SavedRoutinePage queryDb={queryDb}/>
+    <SavedRoutinePage handleRoutineListClick={handleRoutineListClick} queryDbList={queryDbList} selectedList={selectedList}/>
     </Router>
   )
 }
