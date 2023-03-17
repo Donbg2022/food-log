@@ -1,0 +1,20 @@
+
+.routine-header{
+  margin: 2rem auto;
+  text-align: center;
+  border-bottom: 1px solid blue;
+  max-width: 50%;
+}
+.routines-list{
+  max-width: 50%;
+  font-size: xx-large;
+  margin: auto;
+}
+.routines-list a{
+  text-decoration: none;
+  color: black;
+}
+
+.routines-list a:hover{
+  color: blue;
+}

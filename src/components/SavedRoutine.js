@@ -1,6 +1,7 @@
 import {db}  from "../firebase/Firebase-config";
 import { collection, getDocs } from "firebase/firestore"; 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SavedRoutine({}) {
   const [routineList, setRoutineList] = useState([])
@@ -17,13 +18,15 @@ export default function SavedRoutine({}) {
     }
     queryDb()
     }, [])
-    console.log(routineList)
   
   return (
+    <div>
+    <h1 className="routine-header">Your Routines</h1>
     <div>{routineList.map((item) => {
       return (
-        <div>{item.name}</div>
+        <div className='routines-list' key={item.name} ><Link to='/routine'>{item.name}</Link></div>
       )
     })}</div>
+    </div>
   )
 }
