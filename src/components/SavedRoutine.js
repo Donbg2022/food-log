@@ -28,7 +28,7 @@ export default function SavedRoutine({handleRoutineListClick, queryDbList, selec
     <h1 className="routine-header">Your Routines</h1>
     <div>{routineList.map((item) => {
       return (
-        <div onClick={() => handleRoutineListClick(`/Routines/donovan/saved-routines/${item.name}/stuff`)} className='routines-list' key={item.name} ><Link to='/routine'>{item.name}</Link></div>
+        <div onClick={() => handleRoutineListClick(`/Routines/donovan/saved-routines/`, item.name)} className='routines-list' key={item.name} ><Link to='/routine'>{item.name}</Link></div>
       )
     })}</div>
     </div>

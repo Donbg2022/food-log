@@ -22,21 +22,24 @@ export default function App() {
   const [stretchList, setStretchList] = useState([])
   const [selected, setSelected] = useState(null)
   const [selectedList, setSelectedList] = useState('')
+  const [clickedRoutine, setClickedRoutine] = useState('')
 
 
   const handleStretchSelect = (option) => {
     setSelected(option)
   }
 
-  function handleRoutineListClick(list){
+  function handleRoutineListClick(list, clickedItem){
     setSelectedList(list)
-    console.log(selectedList)
+    setClickedRoutine(clickedItem)
   }
 
   const queryDb = async() => {
     const querySnapshot = await getDocs(collection(db, selected));
+    console.log(selected)
     
       setStretchList(querySnapshot.docs.map((doc) => {
+        console.log(doc.id)
         return {name: doc.id, directions: doc.data().directions}
       }))
     }
@@ -46,14 +49,27 @@ export default function App() {
         console.log(selectedList)
 
         const querySnapshot = await getDocs(collection(db, selectedList));
-      
-        setStretchList(querySnapshot.docs.map((doc) => {
-          return {name: doc.id, directions: doc.data().directions}
-        }))
-        console.log(stretchList)
-      }
-      }
-    
+
+        console.log('runnning')
+
+        // setStretchList(querySnapshot.docs.map((doc) => {
+
+        //   return {name: doc.id, directions: doc.data().directions}
+        // }))
+
+        querySnapshot.docs.map((doc) => {
+          if (clickedRoutine === doc.id){
+            console.log(doc.id)
+            console.log(doc.data().directions)
+            setStretchList(doc.data().stuff.map((item) => {
+                return {name: item.name, directions: item.directions}
+              }))
+          }
+            
+        
+      })
+      }}
+    console.log(stretchList)
 
 
   const handleListClick = async (chosenStretch, stretchDirections) => {
@@ -63,7 +79,7 @@ export default function App() {
       setSelectedStretches([...selectedStretches, {name: chosenStretch, directions: stretchDirections}])
 
       await setDoc(doc(db, "/Routines/donovan/saved-routines", routineName), {
-        stuff: [...selectedStretches, {name: chosenStretch, directions: stretchDirections}]}
+        stretchArray: [...selectedStretches, {name: chosenStretch, directions: stretchDirections}]}
       );
     }
   }
