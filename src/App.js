@@ -29,6 +29,8 @@ export default function App() {
     setSelected(option)
   }
 
+  
+
   function handleRoutineListClick(list, clickedItem){
     setSelectedList(list)
     setClickedRoutine(clickedItem)
@@ -80,7 +82,7 @@ export default function App() {
   }
   return (
     <Router>
-      <Nav></Nav>
+      <Nav setSelectedStretches={setSelectedStretches}></Nav>
       <Routes>
         <Route path='/' element={<DropdownSearchPage routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick}displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
