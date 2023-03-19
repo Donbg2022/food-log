@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import DropdownSearch from '../components/DropdownSearch'
 import '../CSS/Dropdown.css'
 import { Link } from "react-router-dom"

@@ -17,14 +17,10 @@ function DropdownSearch ({ options, handleStretchSelect, value, displayRoutine }
   }
     document.addEventListener('click', handler, true)
 
-    return () => {
-      document.removeEventListener('click', handler)
-      }
+    return () => document.removeEventListener('click', handler)
     }, [])
 
-  const handleDropdownClick = () => {
-    setIsOpen(!isOpen)
-  }
+  const handleDropdownClick = () => setIsOpen(!isOpen)
 
   const handleOptionClick = (option) => {
     handleStretchSelect(option.value)
