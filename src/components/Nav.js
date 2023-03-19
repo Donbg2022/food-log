@@ -5,7 +5,6 @@ export default function Nav({setSelectedStretches}){
 
   function handleClick(){
     setSelectedStretches([])
-    console.log('running')
   }
   return (
     <div>

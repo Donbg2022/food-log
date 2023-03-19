@@ -1,0 +1,16 @@
+.timer{
+  background-color: transparent;
+  border: 1px solid black;
+  font-size: x-large;
+  cursor: pointer;
+  padding: 0 1rem;
+}
+.timer:hover{
+  background-color: rgb(179, 205, 245);
+}
+
+.count{
+  font-size: x-large;
+  display: inline;
+  padding: 1rem;
+}

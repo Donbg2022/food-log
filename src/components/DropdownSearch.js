@@ -52,7 +52,7 @@ const DropdownJsx = () => {
   )
 }
 else{
-  return <div>Add routine name first</div>
+  return <div className="add-name-alert">Add routine name first</div>
 }
 }
 

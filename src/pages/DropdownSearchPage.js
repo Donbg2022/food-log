@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import DropdownSearch from '../components/DropdownSearch'
 import '../CSS/Dropdown.css'
 import { Link } from "react-router-dom"
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 
 
-function DropdownSearchPage({ handleListClick, routineNameSubmit, displayRoutine, queryDb, handleStretchSelect, stretchList, selected }) {
+function DropdownSearchPage({ handleSave, showSaveForm, handleListClick, routineNameSubmit, displayRoutine, queryDb, handleStretchSelect, stretchList, selected }) {
 
 useEffect(() => {
     if(selected === null){
@@ -28,6 +28,22 @@ useEffect(() => {
     tempRoutineName = e.target.value
   }
 
+  const ShowForm = () => {
+    return (
+      <form action="" onSubmit={(e) => routineNameSubmit(e, tempRoutineName)}>
+        <input placeholder='New Routine Name' className='stretch-input' type="text" onChange={handleChange}/>
+        <div className='button-wrapper'>
+        </div>
+        <button onClick={handleSave} className='stretch-name-button'type="submit" >Save Routine Name</button>
+      </form>
+    )
+  }
+
+  const ShowSave = () => {
+    return <Link to='/routine' onClick={handleSave}><button className='save-button'>Start Routine</button></Link>
+
+  }
+
   return(
     <div>
       <DropdownSearch handleStretchSelect={handleStretchSelect} value={selected} options={options} displayRoutine={displayRoutine}/>
@@ -38,17 +54,14 @@ useEffect(() => {
         )
       })}
       </div>
-      
-      <form action="" onSubmit={(e) => routineNameSubmit(e, tempRoutineName)}>
-        <input type="text" onChange={handleChange}/>
-        <div className='button-wrapper'>
-          <Link to='/routine'><button className='save-button'>Start Routine</button></Link>
-        </div>
-        <button  type="submit" >sdrgth</button>
-      </form>
+      <div className='form-wrapper'>
+        {showSaveForm? <ShowForm />: <ShowSave />}
+      </div>
+
+
     </div>
   )
 }
 
-
 export default DropdownSearchPage
+ 

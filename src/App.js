@@ -23,7 +23,11 @@ export default function App() {
   const [selected, setSelected] = useState(null)
   const [selectedList, setSelectedList] = useState('')
   const [clickedRoutine, setClickedRoutine] = useState('')
+  const [showSaveForm, setShowSaveForm] = useState(true)
 
+  const handleSave = () => {
+    setShowSaveForm(!showSaveForm)
+  }
 
   const handleStretchSelect = (option) => {
     setSelected(option)
@@ -60,7 +64,6 @@ export default function App() {
           }
       })
     }}
-    console.log(stretchList)
 
 
   const handleListClick = async (chosenStretch, stretchDirections) => {
@@ -82,12 +85,11 @@ export default function App() {
   }
   return (
     <Router>
-      <Nav setSelectedStretches={setSelectedStretches}></Nav>
+      <Nav handleSave={handleSave} setSelectedStretches={setSelectedStretches}></Nav>
       <Routes>
-        <Route path='/' element={<DropdownSearchPage routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick}displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
+        <Route path='/' element={<DropdownSearchPage handleSave={handleSave} showSaveForm={showSaveForm} routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick}displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
       </Routes>
-     {/* <RoutinePage selectedStretches={selectedStretches} /> */}
     <SavedRoutinePage handleRoutineListClick={handleRoutineListClick} queryDbList={queryDbList} selectedList={selectedList} clickedRoutine={clickedRoutine}/>
     </Router>
   )
