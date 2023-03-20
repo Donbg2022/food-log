@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
+import '../CSS/Countdown.css'
 
 export default function Countdown({ onBgColor }){
-  const [timer, setTimer] = useState(1)
+  const [timer, setTimer] = useState(60)
 
   useEffect(() => {
     if(timer === 0) {
@@ -25,9 +26,9 @@ export default function Countdown({ onBgColor }){
  
 
   return ( 
-    <div>
-      <button onClick={handleClick}>play</button>
-      {timer}
+     <div className="timer-wrapper">
+      <button className='timer' onClick={handleClick}>start</button>
+      <div className="count">{timer}</div>
     </div>
   )
 }
