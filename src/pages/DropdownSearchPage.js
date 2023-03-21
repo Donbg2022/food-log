@@ -21,6 +21,9 @@ useEffect(() => {
     {label: 'Neck', value: 'neck'},
     {label: 'Shoulders', value: 'shoulders'},
     {label: 'Bicep', value: 'bicep'},
+    {label: 'Back', value: 'back'},
+    {label: 'Hips', value: 'hips'},
+    {label: 'Forearms', value: 'Forearms'},
   ]
 
   let tempRoutineName = ''
@@ -30,14 +33,14 @@ useEffect(() => {
 
   const ShowForm = () => {
     return (
-      <form action="#" onSubmit={() => routineNameSubmit(tempRoutineName)}>
+      <form >
         <input className='stretch-input' type="text" name='stretch' required placeholder='New Routine Name' onChange={handleChange}/>
-        {/* <div className='button-wrapper'> */}
+        <div className='button-wrapper'>
         <button type="submit" onClick={(e) => {
           handleSave()
           routineNameSubmit(e, tempRoutineName)
         }} className='stretch-name-button'  >Save Routine Name</button>
-      {/* </div> */}
+      </div>
       </form>
     )
   }
