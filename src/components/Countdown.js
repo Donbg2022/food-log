@@ -3,7 +3,7 @@ import '../CSS/Countdown.css'
 import sound from '../assets/beep.mp3'
 
 export default function Countdown({ onBgColor }){
-  const [timer, setTimer] = useState(1)
+  const [timer, setTimer] = useState(60)
 
   function play() {
     var audio = new Audio(sound);
