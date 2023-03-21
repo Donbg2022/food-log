@@ -95,3 +95,7 @@ form{
   padding-top: 3rem;
   font-size: x-large
 }
+
+.form-wrapper{
+  text-align: center;
+}
