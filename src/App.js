@@ -90,8 +90,9 @@ export default function App() {
       <Routes>
         <Route path='/' element={<DropdownSearchPage handleSave={handleSave} showSaveForm={showSaveForm} routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick}displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
+        <Route path='/saved' element={<SavedRoutinePage handleRoutineListClick={handleRoutineListClick} queryDbList={queryDbList} selectedList={selectedList} clickedRoutine={clickedRoutine}/>}></Route>
+
       </Routes>
-    <SavedRoutinePage handleRoutineListClick={handleRoutineListClick} queryDbList={queryDbList} selectedList={selectedList} clickedRoutine={clickedRoutine}/>
     </Router>
   )
 }
