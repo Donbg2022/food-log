@@ -53,6 +53,7 @@ useEffect(() => {
   return(
     <div>
       <DropdownSearch handleStretchSelect={handleStretchSelect} value={selected} options={options} displayRoutine={displayRoutine}/>
+      {/* sretches from db after muscle group selection */}
       <div className='stretch-list-wrapper'>
         {stretchList.map((stretch) => {
         return (
