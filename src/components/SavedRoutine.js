@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function SavedRoutine({handleRoutineListClick, queryDbList, clickedRoutine}) {
+export default function SavedRoutine({handleRoutineListClick, clickedRoutine}) {
   const [routineList, setRoutineList] = useState([])
 
   useEffect(() => {
@@ -16,15 +16,10 @@ export default function SavedRoutine({handleRoutineListClick, queryDbList, click
     }
     queryDb()
     }, [])
-
-
-    useEffect(()=> {
-      queryDbList()
-    }, [clickedRoutine])
-  
-
+    
   return (
     <div>
+      {/* list of routines rendering from db */}
     <h1 className="routine-header">Your Routines</h1>
     <div>{routineList.map((item) => {
       return (
