@@ -11,7 +11,8 @@ export default function Nav({setSelectedStretches}){
       <nav className="nav">
         <h1 className="logo"><Link to='/'>STRETCHIT!</Link></h1>
         <ul className="links-list">
-          <li onClick={handleClick}><Link to='/'>Create</Link></li>
+          <li><Link to='/'>Home</Link></li>
+          <li onClick={handleClick}><Link to='/search'>Create</Link></li>
           <li><Link to='/routine'>Routine</Link></li>
           <li><Link to='/saved'>Saved</Link></li>
         </ul>
