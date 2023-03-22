@@ -12,6 +12,7 @@ import {
 import { doc, setDoc } from "firebase/firestore"; 
 import {db}  from "./firebase/Firebase-config";
 import { collection, getDocs } from "firebase/firestore"; 
+import HomePage from "./pages/HomePage";
 
 
 
@@ -103,8 +104,10 @@ export default function App() {
   return (
     <Router>
       <Nav handleSave={handleSave} setSelectedStretches={setSelectedStretches}></Nav>
+      
       <Routes>
-        <Route path='/' element={<DropdownSearchPage handleSave={handleSave} showSaveForm={showSaveForm} routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick} displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/search' element={<DropdownSearchPage handleSave={handleSave} showSaveForm={showSaveForm} routineNameSubmit={handleSubmit} routineName={routineName} handleListClick={handleListClick} displayRoutine={displayRoutine} handleStretchSelect={handleStretchSelect} queryDb={queryDb} stretchList={stretchList} selected={selected}/>}></Route>
         <Route path='/routine' element={<RoutinePage selectedStretches={selectedStretches} />}></Route>
         <Route path='/saved' element={<SavedRoutinePage handleRoutineListClick={handleRoutineListClick} queryDbList={queryDbList} selectedList={selectedList} clickedRoutine={clickedRoutine}/>}></Route>
 
